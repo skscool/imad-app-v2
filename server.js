@@ -115,7 +115,7 @@ function createTemplate(page){
 		</body>
 	</html>`;
 	return template;
-};
+}
 
 app.get('/template-style.css', function (req, res){
   res.sendFile(path.join(__dirname,'ui','template-style.css'));
