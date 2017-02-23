@@ -1,0 +1,17 @@
+.page1{
+	text-align: center;
+	color: orange;
+	background: black;
+	margin: 10% 30% auto;
+	border: 2px dashed white;
+}
+.page2{
+	text-align: center;
+	color: white;
+	background: maroon;
+	margin: 10% 30% auto;
+	border: 2px dashed yellow;
+}
+.body{
+	background: grey;
+}

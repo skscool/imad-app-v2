@@ -1,0 +1,72 @@
+<HTML>
+	<HEAD>
+		<TITLE>
+		Switch To Apache!
+		</TITLE>
+		<link href="/ui/apache-css.css" rel="stylesheet"/>
+	</HEAD>
+	<BODY>
+	<div class="body">
+	<div class="normal_text">
+		Apache is a web server. You can also run your web app using Apache web server as follows :
+	</div>
+	<div class="steps">
+		<ol>
+			<li>Download the Apache web server from <a href="http://www.apachelounge.com/download/VC14/binaries/httpd-2.4.25-win64-VC14.zip">Apache HTTP Server</a> (I am presuming you run Windows 7 or later version 64bit).
+			Be sure that you have installed the latest <a href="https://www.microsoft.com/en-us/download/details.aspx?id=53840">C++ Redistributable Visual Studio 2015</a> before installing Apache.</li>
+			<br/>
+			<li>Extract the downloaded file using <a href="http://www.rarlab.com/rar/winrar-x64-540.exe">Winrar</a> Or similar sofware.</li>
+			<br/>
+			<li>Open httpd.conf file residing inside conf folder in a Notepad or any Text editor. Better use <a href="https://notepad-plus-plus.org/repository/7.x/7.3.1/npp.7.3.1.Installer.x64.exe">Notepad++</a></li>
+			<br/>
+			<div class="image"><img src="/ui/capture.jpg"></div>
+			<br/>
+			<li>Edit line number 37 as shown ServerRoot "path-to-your-Apache24-folder". In my case it is : ServerRoot "F:/Server/Apache24"</li>
+			<br/>
+			<div class="image"><img src="/ui/capture2.jpg"></div>
+			<br/>
+				<div class="note">
+				Note: "path-to-your-Apache24-folder" is the root-directory of your Apache Web Server.
+				</div>
+			<br/>
+			<li>Edit line number 245 as DocumentRoot "path-to-your-web-app-directory".
+			In my case it is : DocumentRoot "F:/Server/Apache24/htdocs". By default Apache looks for files to server in the htdocs directory.</li>
+			<br/>
+			<div class="image"><img src="/ui/capture3.jpg"></div>
+			<br/>
+				<div class="note">
+				Note: By path-to-your-web-app-directory I mean the folder where you downloaded or cloned the github repository.
+				</div>
+			<br/>
+			<li>Edit line number 246 as < Directory "path-to-your-web-app-directory" >.<br/>
+			mine is < Directory "F:/Server/Apache24/htdocs" ></li>
+			<br/>
+				<div class="note">
+				Note: Web server by default look for some index.html file to host. So we keep a copy of this html file in the root of our to-be-served directory.
+				</div>
+			<br/>
+			<div class="image"><img src="/ui/capture4.jpg"></div>
+			<br/>
+			<li>Goto bin folder and from there run the ApacheMonitor.exe.</li>
+			<br/>
+			<div class="image"><img src="/ui/capture5.jpg"></div>
+			<br/>
+			<li>Right-click on ApacheMonitor.exe which should be in system tray in the taskbar and open it. And click on Start.</li>
+			<br/>
+			<div class="image"><img src="/ui/capture6.jpg"></div>
+			<br/>
+			<li>Open your Web Browser and enter url localhost:8080.</li>
+			<br/>
+				<div class="note">
+				Note: If you have already some server listening on port 8080 or you face some problem then try changing port 
+				in line 58 of httpd.conf file to some other port like 8081 etc.
+				</div>
+				<br/>
+		</ol>
+	</div>
+	<div class="normal_text">
+		And that's pretty much all you need to do.
+	</div>
+	</div>
+	</BODY>
+</HTML>
