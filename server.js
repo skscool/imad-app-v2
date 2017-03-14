@@ -105,8 +105,8 @@ function createTemplate(article){
 			<ul>
 			<li><a href = "apache.html">Apache</a></li>
 			<li><a href = "api.html">API</a></li>
-			<li><a href = "page-one">Article 1</a></li>
-			<li><a href = "page-two">Article 2</a></li>
+			<li><a href = "/article/page-1">Article 1</a></li>
+			<li><a href = "/article/page-2">Article 2</a></li>
 			<li style = "float:right"><a href = "counter">counter</a></li>
 		</ul>
 			${article.body}
