@@ -107,8 +107,8 @@ function createTemplate(article){
 			<title>
 				${article.title}
 			</title>
-			<link href= "ui/template-style.css" rel="stylesheet"/>
-			<link href = "ui/index-style.css" rel = "stylesheet"></link>
+			<link href= "/template-style.css" rel="stylesheet"/>
+			<link href = "/ui/index-style.css" rel = "stylesheet"></link>
 		</head>
 		<body>
 			<ul>
