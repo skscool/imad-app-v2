@@ -129,7 +129,7 @@ app.get('/template-style.css', function (req, res){
 });
 
 app.get('/article/:pagename', function (req, res){
-    pool.query("SELECT * FROM articles WHERE title = '" + req.params.pagename +"'", function(err, result){
+    pool.query("SELECT * FROM articles WHERE page-no = " + req.params.pagename, function(err, result){
        if(err){
            res.status(500).send(err.toString());
        } else {
