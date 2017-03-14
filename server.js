@@ -140,8 +140,19 @@ app.get('/template-style.css', function (req, res){
   res.sendFile(path.join(__dirname,'ui','template-style.css'));
 });
 
-app.get('/:pagename', function (req, res){
-  res.send(createTemplate(pages[req.params.pagename]));
+app.get('/article/:pagename', function (req, res){
+    pool.query("SELECT * FROM articles WHERE title = '" + req.params.pagename +"'", function(err, result){
+       if(err){
+           res.status(500).send(err.toString());
+       } else {
+           if(result.rows.length === 0){
+               res.status(404).send("Article Not Found!");
+           } else {
+               var articleData = result.rows[0];
+               res.send(createTemplate(artileData));
+           }
+       }
+    });
 });
 
 
