@@ -138,7 +138,7 @@ app.get('/article/:pagename', function (req, res){
            } else {
                console.log(`result.rows.length >> result.rows[0]`);
                var articleData = result.rows[0];
-               res.send(createTemplate(artileData));
+               res.send(createTemplate(articleData));
            }
     }
     });
