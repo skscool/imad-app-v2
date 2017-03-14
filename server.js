@@ -100,24 +100,12 @@ app.get('/submit-name', function(req, res){
 	res.send(JSON.stringify(names));
 });
 
-//templating
-var pages = {
-	'page-one':{
-		title: 'Template Demo - Page 1',
-		body: `<div class= "page1"><h2>This is First page to demonstrate Serverside Templating using javascript and node.js.</h2></div>`
-	},
-	'page-two':{
-		title: 'Template Demo - Page 2',
-		body: `<div class= "page2"><h2>This is Second page to demonstrate Serverside Templating using javascript and node.js.</h2></div>`
-	}
-};
-
-function createTemplate(page){
+function createTemplate(article){
 	var template =
 		`<html>
 		<head>
 			<title>
-				${page.title}
+				${article.title}
 			</title>
 			<link href= "/template-style.css" rel="stylesheet"/>
 			<link href = "ui/index-style.css" rel = "stylesheet"></link>
@@ -130,7 +118,7 @@ function createTemplate(page){
 			<li><a href = "page-two">Article 2</a></li>
 			<li style = "float:right"><a href = "counter">counter</a></li>
 		</ul>
-			${page.body}
+			${article.body}
 		</body>
 	</html>`;
 	return template;
