@@ -102,11 +102,11 @@ app.get('/submit-name', function(req, res){
 
 //templating
 var pages = {
-	'page-one':{
+	'page-1':{
 		title: 'Template Demo - Page 1',
 		body: `<div class= "page1"><h2>This is First page to demonstrate Serverside Templating using javascript and node.js.</h2></div>`
 	},
-	'page-two':{
+	'page-2':{
 		title: 'Template Demo - Page 2',
 		body: `<div class= "page2"><h2>This is Second page to demonstrate Serverside Templating using javascript and node.js.</h2></div>`
 	}
