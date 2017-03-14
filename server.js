@@ -129,12 +129,12 @@ app.get('/template-style.css', function (req, res){
 });
 
 app.get('/article/:pagename', function (req, res){
-    pool.query("SELECT * FROM articles WHERE page='" + req.params.pagename + "'", function(err, result){
+    pool.query("SELECT * FROM articles WHERE page= $1",[req.params.pagename], function(err, result){
        if(err){
            res.status(500).send(err.toString()+req.params.pagename);
        } else {
            if(result.rows.length === 0){
-               res.status(404).send("Article "+req.params.pagename+" Not Found!");
+               res.status(404).send("Article "+req.params.pagename]+" Not Found!");
            } else {
                console.log(`result.rows.length >> result.rows[0]`);
                var articleData = result.rows[0];
