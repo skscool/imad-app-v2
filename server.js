@@ -141,14 +141,24 @@ app.get('/article/:pagename', function (req, res){
     });
 });
 
-function hash(input,salt){
-    var hashedPass = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return hashedPass.toString('hex');
+function hash(pass, salt){
+    var hashed = crypto.pbkdf2Sync(pass,salt,10000,512,'sha512');
+    return ['pbkdf2';'10000';salt;hashed.toString('hex')].join('$');
 }
 
-app.get('/hash/:password', function(req, res){
-   var hashedPass = hash(req.params.password,"random string");
-   res.send(hashedPass);
+app.post('/create-user', function (req, res){
+   var userName = req.body.username;
+   var password = req.body.password;
+   vat salt = crypto.randomBytes(128).toString('hex');
+   var hashedPassword = hash(password,salt);
+   
+   pool.query('insert into "users" (username,password) values ($1,$2)',[username,hashedPassword],function(err,res){
+      if(err){
+          res.status(500).send(err.toString());
+      } else{
+          res.send("user succesfully created: " + username);
+      }
+   });
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
