@@ -142,7 +142,7 @@ app.get('/article/:pagename', function (req, res){
 });
 
 function hash(input,salt){
-    var hashedPass = crypto.pbkdf2Sync(input,salt,10000,512,sha512);
+    var hashedPass = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
     return hashedPass.toString('hex');
 }
 
