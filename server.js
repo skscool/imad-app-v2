@@ -2,6 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+
+//database credentials
 var config = {
     user: 'skscool',
     database: 'skscool',
@@ -17,6 +19,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+//pool for database connection
 var pool = new Pool(config);
 
 app.get('/ui/index-style.css', function (req, res) {
@@ -68,7 +71,7 @@ app.get('/ui/tuning-your-apache-server.png', function(req, res){
  res.sendFile(path.join(__dirname,'ui','tuning-your-apache-server.png'));
 });
 
-//API end point
+//counter end point variable
 var counter=0;
 
 app.get('/api.html', function(req, res){
@@ -79,11 +82,13 @@ app.get('/main.js', function(req, res){
 	res.sendFile(path.join(__dirname, '', 'main.js'));
 });
 
+//counts number of times visited
 app.get('/counter', function(req, res){
 	counter = counter+1;
 	res.send(counter.toString());
 });
 
+//store names using ?name or UI in names[]
 var names = [];
 app.get('/submit-name', function(req, res){
 	var name = req.query.name;
@@ -120,14 +125,15 @@ app.get('/template-style.css', function (req, res){
 });
 
 app.get('/article/:pagename', function (req, res){
+    //retriving the title and body from database
     pool.query("SELECT * FROM articles WHERE page= $1",[req.params.pagename], function(err, result){
        if(err){
-           res.status(500).send(err.toString()+req.params.pagename);
+           res.status(500).send(err.toString());
        } else {
            if(result.rows.length === 0){
-               res.status(404).send("Article "+req.params.pagename+" Not Found!");
+               res.status(404).send("Article Not Found!");
            } else {
-               console.log(`result.rows.length >> result.rows[0]`);
+               //template will be created using database
                var articleData = result.rows[0];
                res.send(createTemplate(articleData));
            }
