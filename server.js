@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
-
+var crypto = require('crypto');
 //database credentials
 var config = {
     user: 'skscool',
@@ -141,6 +141,15 @@ app.get('/article/:pagename', function (req, res){
     });
 });
 
+function hash(input,salt){
+    var hashedPass = crypto.pbkdf2Sync(input,salt,10000,512,sha512);
+    return hashedPass.toString('hex');
+}
+
+app.get('/hash/:password', function(req, res){
+   var hashedPass = hash(req.params.password,"random string");
+   res.send(hashedPass);
+});
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
