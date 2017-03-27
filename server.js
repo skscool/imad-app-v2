@@ -163,6 +163,7 @@ app.post('/create-user', function (req, res){
    });
 });
 
+//to take username and password from json object and validate
 app.post('/login', function(req, res){
    var username = req.body.username;
    var password = req.body.password;
