@@ -3,7 +3,7 @@ window.onload = function(){
   submit.onclick = verify;
 }
 function verify(){
-    alert('kfjaslkdf');
+    console.log('satyam');
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
     if(request.readyState === XMLHttpRequest.DONE){
