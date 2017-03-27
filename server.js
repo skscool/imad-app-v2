@@ -102,6 +102,10 @@ app.get('/login.html', function(req,res){
     res.sendFile(path.join(__dirname, 'ui' , 'login.html'));
 });
 
+app.get('/login.js', function(req,res){
+    res.sendFile(path.join(__dirname, '' , 'login.js'));
+});
+
 function createTemplate(article){
 	var template =
 		`<html>
