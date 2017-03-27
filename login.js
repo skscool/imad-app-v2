@@ -22,4 +22,4 @@ function verify(){
   request.open('POST', 'http://skscool.imad.hasura-app.io/login',true);
   request.setRequestHeader('Content-Type', 'application/json');
   request.send('username: username,password: password');
-};
+}
