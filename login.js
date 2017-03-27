@@ -22,5 +22,5 @@ function verify(){
   console.log(password);
   request.open('POST', 'http://skscool.imad.hasura-app.io/login',true);
   request.setRequestHeader('Content-Type', 'application/json');
-  request.send('username: username,password: password');
+  request.send(JSON.Stringify({username: username, password: password}));
 }
