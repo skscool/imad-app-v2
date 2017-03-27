@@ -4,6 +4,7 @@ window.onload = function(){
 }
 function verify(){
     console.log('satyam');
+    alert('bhosdi ka');
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
     if(request.readyState === XMLHttpRequest.DONE){
