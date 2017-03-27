@@ -3,6 +3,7 @@ window.onload = function(){
   submit.onclick = verify;
 };
 function verify(){
+    alert('functioning!');
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
     if(request.readyState === XMLHttpRequest.DONE){
