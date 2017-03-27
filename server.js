@@ -156,7 +156,7 @@ app.post('/create-user', function (req, res){
    
    pool.query('insert into "user" (username,password) values ($1,$2)',[username,hashedPassword],function(err,res){
       if(err){
-          res.status(500).send(err.toString());
+          res.send("error occured!");
       } else{
           res.send("user succesfully created: " + username);
       }
