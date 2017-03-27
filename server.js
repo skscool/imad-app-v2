@@ -149,7 +149,7 @@ function hash(pass, salt){
 }
 
 app.post('/create-user', function (req, res){
-   var userName = req.body.username;
+   var username = req.body.username;
    var password = req.body.password;
    var salt = crypto.randomBytes(128).toString('hex');
    var hashedPassword = hash(password,salt);
