@@ -1,7 +1,7 @@
 window.onload = function(){
   var submit = document.getElementById('submit');
   submit.onclick = verify;
-}
+};
 function verify(){
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
@@ -22,4 +22,4 @@ function verify(){
   request.open('POST', 'http://skscool.imad.hasura-app.io/login',true);
   request.setRequestHeader('Content-Type', 'application/json');
   request.send('username: username,password: password');
-}
+};
