@@ -98,7 +98,7 @@ app.get('/submit-name', function(req, res){
 	res.send(JSON.stringify(names));
 });
 
-app.get('/login', function(req,res){
+app.get('/login.html', function(req,res){
     res.sendFile(path.join(__dirname, 'ui' , 'login.html'));
 });
 
