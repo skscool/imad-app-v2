@@ -4,6 +4,8 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+
 //database credentials
 var config = {
     user: 'skscool',
@@ -15,7 +17,14 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
+//body for POST request
 app.use(bodyParser.json());
+//config for cookie
+app.use(session({
+    secret: 'random string',
+    cookie: {maxAge: 1000*60*60*24*30}
+}));
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -187,6 +196,9 @@ app.post('/login', function(req, res){
                var salt = dbString.split('$')[2];
                var hashedPassword = hash(password, salt);
                if(hashedPassword === dbString){
+                  //set the session
+                  req.session.auth = {userId: result.rows[0].id};
+                  //set the cookie with sessionId, Internally maps to session object, Auth contain userId object
                    res.send('Credentials are correct');
                }else{
                    res.send(403).send('invalid credentials!');
@@ -194,6 +206,14 @@ app.post('/login', function(req, res){
            }
        }
    });
+});
+
+app.get('/check-login', function(req, res){
+   if(req.session && req.session.auth && req.session.auth.userId){
+       res.send('You are logged in '+ req.session.auth.userId.toString());
+   } else{
+       res.send('You are not logged in.');
+   }
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
