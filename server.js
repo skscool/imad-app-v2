@@ -21,7 +21,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 //config for cookie
 app.use(session({
-    secret: 'random string',
+    secret: 'randomstring',
     cookie: {maxAge: 1000*60*60*24*30}
 }));
 
@@ -209,7 +209,6 @@ app.post('/login', function(req, res){
 });
 
 app.get('/check-login', function(req, res){
-    res.send('test >> ' + req.session.auth.userId.toString());
    if(req.session && req.session.auth && req.session.auth.userId){
        res.send('You are logged in '+ req.session.auth.userId.toString());
    } else{
