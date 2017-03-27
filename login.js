@@ -14,7 +14,7 @@ function verify(){
         alert('something went wrong on the server!');
       }
     }
-  }
+  };
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
   console.log(username);
