@@ -1,7 +1,7 @@
 window.onload = function(){
   var submit = document.getElementById('submit');
   submit.onclick = verify;
-};
+}
 function verify(){
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
