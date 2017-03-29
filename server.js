@@ -198,6 +198,7 @@ app.post('/login', function(req, res){
                if(hashedPassword === dbString){
                   //set the session
                   req.session.auth = {userId: result.rows[0].id};
+                  console.log(req.session.auth.userId.toString());
                   //set the cookie with sessionId, Internally maps to session object, Auth contain userId object
                    res.send('Credentials are correct');
                }else{
