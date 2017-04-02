@@ -219,6 +219,7 @@ app.get('/check-login', function(req, res){
 
 app.get('/logout', function(req, res){
     delete req.session.auth;
+    res.send('logged out successfully.');
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
