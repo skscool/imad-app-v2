@@ -30,13 +30,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/registration.html', function (req, res) {
-  res.sendFile(path.join(__dirname, '', 'registration.html'));
+  res.sendFile(path.join(__dirname, 'ui', 'registration.html'));
 });
 app.get('/regstyle.css', function (req, res) {
-  res.sendFile(path.join(__dirname, '', 'regstyle.css'));
+  res.sendFile(path.join(__dirname, 'ui', 'regstyle.css'));
 });
 app.get('/background.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, '', 'background.jpg'));
+  res.sendFile(path.join(__dirname, 'ui', 'background.jpg'));
 });
 //pool for database connection
 var pool = new Pool(config);
