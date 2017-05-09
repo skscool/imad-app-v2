@@ -29,7 +29,15 @@ app.use(session({
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
+app.get('/registration.html', function (req, res) {
+  res.sendFile(path.join(__dirname, '', 'registration.html'));
+});
+app.get('/regstyle.css', function (req, res) {
+  res.sendFile(path.join(__dirname, '', 'regstyle.css'));
+});
+app.get('/background.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, '', 'background.jpg'));
+});
 //pool for database connection
 var pool = new Pool(config);
 
