@@ -29,7 +29,7 @@ app.use(session({
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/registration.html', function (req, res) {
+app.get('/register.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'register.html'));
 });
 app.get('/regstyle.css', function (req, res) {
